@@ -9,7 +9,7 @@ const LinkList = ({
   <div>
     { console.log(error, feed, loading) }
     { loading && <div>Loading...</div> }
-    { error && <div>Error { error }</div> }
+    { error && <div>Error!</div> }
     {
       feed && feed.links.map((link) => (
         <Link key={ link.id } link={ link } />
