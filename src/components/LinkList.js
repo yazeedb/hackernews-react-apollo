@@ -14,7 +14,7 @@ const linksToRender = [
   },
 ];
 
-const LinkList = ({ linksToRender }) => (
+const LinkList = () => (
   <div>
     {
       linksToRender
