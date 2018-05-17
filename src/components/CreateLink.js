@@ -11,7 +11,7 @@ const CreateLink = ({
   setDescription,
   setUrl
 }) => (
-  <div>
+  <form onSubmit={ createLink }>
     <div className="flex flex-column mt3">
       <input
         className="mb2"
@@ -28,10 +28,8 @@ const CreateLink = ({
         placeholder="The URL for the link"
       />
     </div>
-    <button onClick={ createLink }>
-      Submit
-    </button>
-  </div>
+    <button type="submit">Submit</button>
+  </form>
 );
 
 const POST_MUTATION = gql`
@@ -59,12 +57,16 @@ const enhanceComponent = compose(
       description,
       url,
       postMutation
-    }) => () => postMutation({
-      variables: {
-        description,
-        url
-      }
-    }).then(console.log)
+    }) => (event) => {
+      event.preventDefault();
+
+      postMutation({
+        variables: {
+          description,
+          url
+        }
+      });
+    }
   }),
 );
 
