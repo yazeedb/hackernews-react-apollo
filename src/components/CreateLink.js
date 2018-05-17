@@ -4,6 +4,8 @@ import gql from 'graphql-tag';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 import { assoc } from 'ramda';
 
+const setStateFromEvent = (prop) => (state) => (event) => assoc(prop, event.target.value, state);
+
 const CreateLink = ({
   createLink,
   description,
@@ -48,8 +50,8 @@ const enhanceComponent = compose(
   withStateHandlers(
     { description: '', url: '' },
     {
-      setDescription: (state) => (event) => assoc('description', event.target.value, state),
-      setUrl: (state) => (event) => assoc('url', event.target.value, state)
+      setDescription: setStateFromEvent('description'),
+      setUrl: setStateFromEvent('url')
     }
   ),
   withHandlers({
