@@ -7,7 +7,6 @@ const LinkList = ({
   feedQuery: { error, feed, loading }
 }) => (
   <div>
-    { console.log(error, feed, loading) }
     { loading && <div>Loading...</div> }
     { error && <div>Error!</div> }
     {
